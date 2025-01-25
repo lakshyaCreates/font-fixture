@@ -14,24 +14,25 @@ export const BackgroundPattern = () => {
     return (
         <>
             <DotPattern
-                width={16}
-                height={16}
-                cy={0.85}
-                cx={0.85}
-                cr={0.85}
+                width={18}
+                height={18}
+                cy={0.95}
+                cx={0.95}
+                cr={0.95}
                 className={cn(
                     "[mask-image:radial-gradient(ellipse,rgba(0,0,0,0.3)_35%,black_50%)]",
-                    "-mt-2 opacity-70 dark:fill-slate-700",
-                    // "[mask-image:linear-gradient(to_bottom,white_70%,transparent,transparent)]",
+                    "-z-50 -mt-2 opacity-90 dark:fill-slate-700",
                 )}
             />
             <Particles
-                className="absolute inset-0"
+                className="absolute inset-0 -z-20"
                 quantity={157}
                 ease={80}
                 color={isLightTheme ? "#000" : "#fff"}
                 refresh
             />
+            <div className="pointer-events-none absolute inset-0 -z-10 flex size-full items-center justify-center bg-background [mask-image:linear-gradient(to_top,white,transparent_50%,transparent)]" />
+            <div className="pointer-events-none absolute inset-0 -z-10 flex size-full items-center justify-center bg-background [mask-image:linear-gradient(to_bottom,white,transparent_20%,transparent)]" />
         </>
     );
 };
