@@ -1,16 +1,17 @@
-import { Footer } from "./footer";
-import { Header } from "./header";
-import { Hero } from "./hero";
+import { BackgroundPattern } from "@/components/background-pattern";
 
-export default function HomePage() {
+import { Header } from "./_components/header";
+import { Hero } from "./_components/hero";
+
+export default function NewPage() {
     return (
-        <>
+        <div className="relative space-y-12 px-12">
+            <BackgroundPattern />
             <Header />
             <Hero />
-            <main className="z-30 -mt-[25vh] flex flex-col items-center justify-center">
-                <div className="h-screen"></div>
+            <main className="mx-auto flex size-full max-w-5xl items-center justify-center px-12">
+                // main app
             </main>
-            <Footer />
-        </>
+        </div>
     );
 }

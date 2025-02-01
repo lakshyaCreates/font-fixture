@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 export const Hero = () => {
     return (
         <div className="relative">
-            <div className="flex h-screen min-w-full max-w-3xl flex-col items-center justify-center text-center">
+            <div className="flex h-full min-w-full max-w-3xl flex-col items-center justify-center pt-24 text-center md:pt-36 lg:pt-48 xl:pt-60">
                 <Badge className="rounded-full border-none bg-gradient-to-br from-primary via-muted/30 via-70% to-primary py-1">
                     We're live on Product Hunt
                 </Badge>
@@ -22,10 +22,6 @@ export const Hero = () => {
                         needs. Choose the perfect typeface with ease.
                     </p>
                 </Balancer>
-            </div>
-
-            <div className="absolute inset-0 left-0 top-0">
-                <BackgroundPattern />
             </div>
         </div>
     );
