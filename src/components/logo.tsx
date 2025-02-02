@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export const Logo = () => {
     return (
-        <div className="flex size-fit flex-nowrap items-center gap-2">
+        <div className="flex max-w-fit flex-nowrap items-center gap-2">
             <Image
                 src={"/font-fixture-icon.png"}
                 alt="Font Fixture Logo"
