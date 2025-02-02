@@ -1,5 +1,7 @@
 import { Provider as WrapBalancerProvider } from "react-wrap-balancer";
 
+import { Toaster } from "../ui/sonner";
+
 import { ThemeProvider } from "./theme-provider";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
@@ -13,6 +15,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
             >
                 {children}
                 <WrapBalancerProvider />
+                <Toaster />
             </ThemeProvider>
         </>
     );
