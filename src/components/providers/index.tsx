@@ -1,3 +1,4 @@
+import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
 import { Provider as WrapBalancerProvider } from "react-wrap-balancer";
 
 import { Toaster } from "../ui/sonner";
@@ -15,6 +16,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
                 {children}
                 <WrapBalancerProvider />
                 <Toaster />
+                <VercelAnalytics />
             </ThemeProvider>
         </>
     );
