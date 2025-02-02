@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 
+import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import Providers from "@/components/providers";
 import { ToolsDock } from "@/components/tools-dock";
@@ -31,6 +32,7 @@ export default function RootLayout({
                     <Header />
                     <ToolsDock />
                     {children}
+                    <Footer />
                 </Providers>
             </body>
         </html>
