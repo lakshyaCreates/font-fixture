@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 
+import { Header } from "@/components/header";
 import Providers from "@/components/providers";
+import { ToolsDock } from "@/components/tools-dock";
 
 import "./globals.css";
 
@@ -25,7 +27,11 @@ export default function RootLayout({
             <body
                 className={`${geistSans.variable} overflow-x-hidden antialiased`}
             >
-                <Providers>{children}</Providers>
+                <Providers>
+                    <Header />
+                    <ToolsDock />
+                    {children}
+                </Providers>
             </body>
         </html>
     );
