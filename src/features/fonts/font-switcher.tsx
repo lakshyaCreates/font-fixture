@@ -1,7 +1,7 @@
 "use client";
 
 import { CheckIcon, Share2Icon } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
@@ -23,8 +23,6 @@ export const FontSwitcher = () => {
     const pathname = usePathname();
     const searchParams = useSearchParams();
     const router = useRouter();
-
-    const baseUrl = "http://localhost:3000";
 
     const {
         primaryFont,
@@ -57,28 +55,21 @@ export const FontSwitcher = () => {
         if (secondaryFontInQuery) setSecondaryFont(secondaryFontInQuery);
     }, [searchParams]);
 
-    function getQuery() {
-        const params = new URLSearchParams(searchParams.toString());
-        params.delete("primaryFont");
-        params.delete("secondaryFont");
-
-        params.set("primaryFont", primaryFont);
-        params.set("secondaryFont", secondaryFont);
-
-        const query = "?" + params.toString();
-
-        return query;
-    }
-
     return (
         <div className="flex w-full flex-wrap items-center gap-2 rounded-lg border bg-background p-2 sm:flex-nowrap">
             <Select
                 onValueChange={(value) => {
-                    const params = new URLSearchParams(searchParams.toString());
                     setPrimaryFont(value);
+
+                    const params = new URLSearchParams(searchParams.toString());
                     params.delete("primaryFont");
                     params.set("primaryFont", value);
-                    router.replace(pathname + "?" + params.toString());
+
+                    window.history.replaceState(
+                        null,
+                        "",
+                        `${pathname}?${params.toString()}`,
+                    );
                 }}
                 value={primaryFont}
             >
@@ -108,10 +99,16 @@ export const FontSwitcher = () => {
             <Select
                 onValueChange={(value) => {
                     setSecondaryFont(value);
+
                     const params = new URLSearchParams(searchParams.toString());
                     params.delete("secondaryFont");
                     params.set("secondaryFont", value);
-                    router.replace(pathname + "?" + params.toString());
+
+                    window.history.replaceState(
+                        null,
+                        "",
+                        `${pathname}?${params.toString()}`,
+                    );
                 }}
                 value={secondaryFont}
             >
