@@ -11,22 +11,17 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-import { useFonts } from "@/features/fonts";
-
 export const PaymentMethod = () => {
     const [active, setActive] = useState<"card" | "paypal" | "apple">("apple");
-    const { primaryFontClassName, secondaryFontClassName } = useFonts();
 
     return (
-        <Card className={cn("", secondaryFontClassName)}>
+        <Card className="font-secondary">
             <CardHeader>
-                <CardTitle className={primaryFontClassName}>
-                    Payment Method
-                </CardTitle>
+                <CardTitle className="font-primary">Payment Method</CardTitle>
             </CardHeader>
             <CardContent>
                 <div className="space-y-4">
-                    <div className="grid grid-cols-3 gap-4">
+                    <div className="font-primary grid grid-cols-3 gap-4">
                         <Button
                             onClick={() => {
                                 setActive("card");
@@ -91,9 +86,7 @@ export const PaymentMethod = () => {
                         </div>
                     </div>
                 </div>
-                <Button className={cn("mt-4 w-full", primaryFontClassName)}>
-                    Continue
-                </Button>
+                <Button className="font-primary mt-4 w-full">Continue</Button>
             </CardContent>
         </Card>
     );

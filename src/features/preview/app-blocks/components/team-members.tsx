@@ -2,8 +2,6 @@
 
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
-
 import {
     Card,
     CardContent,
@@ -12,17 +10,11 @@ import {
     CardTitle,
 } from "@/components/ui/card";
 
-import { useFonts } from "@/features/fonts";
-
 export const TeamMembers = () => {
-    const { primaryFontClassName, secondaryFontClassName } = useFonts();
-
     return (
-        <Card className={secondaryFontClassName}>
+        <Card className="font-secondary">
             <CardHeader>
-                <CardTitle className={cn("", primaryFontClassName)}>
-                    Team Members
-                </CardTitle>
+                <CardTitle className="font-primary">Team Members</CardTitle>
                 <CardDescription>
                     Invite your team members to collaborate.
                 </CardDescription>
@@ -43,9 +35,7 @@ export const TeamMembers = () => {
                                     className="aspect-auto size-10 rounded-full object-cover object-center"
                                 />
                                 <div>
-                                    <p className={cn("", primaryFontClassName)}>
-                                        {i.name}
-                                    </p>
+                                    <p className="font-primary">{i.name}</p>
                                     <p className="text-sm text-muted-foreground">
                                         @{i.username}
                                     </p>
@@ -62,17 +52,17 @@ export const TeamMembers = () => {
 const members = [
     {
         avatar: "/team-member-avatar-01.png",
-        name: "Lakshya Sharma",
-        username: "lakshya.creates07",
+        name: "John Doe",
+        username: "john.doe07",
     },
     {
         avatar: "/team-member-avatar-02.png",
-        name: "Bhumi Sharma",
-        username: "leadwithbhumi",
+        name: "James Bond",
+        username: "jamesb0nd",
     },
     {
         avatar: "/team-member-avatar-03.png",
-        name: "Kaushal Gohil",
-        username: "kaushalgohil1999",
+        name: "Daniel Mack",
+        username: "danielmack",
     },
 ];

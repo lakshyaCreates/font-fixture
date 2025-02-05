@@ -3,9 +3,9 @@
 import { CheckIcon, Share2Icon } from "lucide-react";
 import { useEffect, useState } from "react";
 
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 
-import { fontNames, loadGoogleFont, useFonts } from ".";
+import { fontNames, useFonts } from ".";
 import { toast } from "sonner";
 
 import { cn } from "@/lib/utils";
@@ -22,30 +22,11 @@ import {
 export const FontSwitcher = () => {
     const pathname = usePathname();
     const searchParams = useSearchParams();
-    const router = useRouter();
 
-    const {
-        primaryFont,
-        secondaryFont,
-        setPrimaryFont,
-        setSecondaryFont,
-        setPrimaryFontClassName,
-        primaryFontClassName,
-        secondaryFontClassName,
-        setSecondaryFontClassName,
-    } = useFonts();
+    const { primaryFont, secondaryFont, setPrimaryFont, setSecondaryFont } =
+        useFonts();
 
     const [copied, setCopied] = useState(false);
-
-    useEffect(() => {
-        const loadFonts = async () => {
-            const primaryClassName = await loadGoogleFont(primaryFont);
-            const secondaryClassName = await loadGoogleFont(secondaryFont);
-            setPrimaryFontClassName(primaryClassName);
-            setSecondaryFontClassName(secondaryClassName);
-        };
-        loadFonts();
-    }, [primaryFont, secondaryFont]);
 
     useEffect(() => {
         const primaryFontInQuery = searchParams.get("primaryFont");
@@ -75,8 +56,7 @@ export const FontSwitcher = () => {
             >
                 <SelectTrigger
                     className={cn(
-                        "relative flex items-center justify-between",
-                        primaryFontClassName,
+                        "font-primary relative flex items-center justify-between",
                     )}
                 >
                     <span className="text-xs font-medium text-muted-foreground">
@@ -86,11 +66,7 @@ export const FontSwitcher = () => {
                 </SelectTrigger>
                 <SelectContent>
                     {fontNames.map((font) => (
-                        <SelectItem
-                            key={font}
-                            value={font}
-                            className={cn(loadGoogleFont(font))}
-                        >
+                        <SelectItem key={font} value={font}>
                             {font}
                         </SelectItem>
                     ))}
@@ -114,8 +90,7 @@ export const FontSwitcher = () => {
             >
                 <SelectTrigger
                     className={cn(
-                        "relative flex items-center justify-between",
-                        secondaryFontClassName,
+                        "font-secondary relative flex items-center justify-between",
                     )}
                 >
                     <span className="text-xs font-medium text-muted-foreground">
@@ -125,11 +100,7 @@ export const FontSwitcher = () => {
                 </SelectTrigger>
                 <SelectContent>
                     {fontNames.map((font) => (
-                        <SelectItem
-                            key={font}
-                            value={font}
-                            className={cn(loadGoogleFont(font))}
-                        >
+                        <SelectItem key={font} value={font}>
                             {font}
                         </SelectItem>
                     ))}

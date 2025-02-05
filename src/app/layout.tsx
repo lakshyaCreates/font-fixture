@@ -3,6 +3,7 @@ import { Geist } from "next/font/google";
 
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { LoadFonts } from "@/components/load-fonts";
 import Providers from "@/components/providers";
 import { ToolsDock } from "@/components/tools-dock";
 
@@ -25,6 +26,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
+            <LoadFonts />
             <body
                 className={`${geistSans.variable} overflow-x-hidden antialiased`}
             >

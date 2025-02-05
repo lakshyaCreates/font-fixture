@@ -6,14 +6,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 
-import { useFonts } from "@/features/fonts";
-
 export const ShareDocument = () => {
-    const { primaryFontClassName, secondaryFontClassName } = useFonts();
     return (
-        <Card className={secondaryFontClassName}>
+        <Card className="font-secondary">
             <CardHeader>
-                <CardTitle className={primaryFontClassName}>
+                <CardTitle className="font-primary">
                     Share this document
                 </CardTitle>
             </CardHeader>
@@ -33,6 +30,7 @@ export const ShareDocument = () => {
                                 toast.success("Document Link Copied", {});
                             }}
                             variant="secondary"
+                            className="font-primary"
                         >
                             Copy Link
                         </Button>
@@ -54,7 +52,9 @@ export const ShareDocument = () => {
                                     </p>
                                 </div>
                             </div>
-                            <Button variant="outline">Can edit</Button>
+                            <Button variant="outline" className="font-primary">
+                                Can edit
+                            </Button>
                         </div>
                     </div>
                 </div>

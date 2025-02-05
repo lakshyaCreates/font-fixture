@@ -5,6 +5,10 @@ export default {
     content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
     theme: {
         extend: {
+            fontFamily: {
+                primary: "var(--font-primary)",
+                secondary: "var(--font-secondary)",
+            },
             colors: {
                 background: "hsl(var(--background))",
                 foreground: "hsl(var(--foreground))",
