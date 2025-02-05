@@ -15,15 +15,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-import { useFonts } from "@/features/fonts";
-
 export const SignupCard = () => {
-    const { primaryFontClassName, secondaryFontClassName } = useFonts();
-
     return (
-        <Card className={cn(secondaryFontClassName, "")}>
+        <Card className="font-secondary">
             <CardHeader>
-                <CardTitle className={cn(primaryFontClassName)}>
+                <CardTitle className="font-primary tracking-normal">
                     Create an account
                 </CardTitle>
                 <CardDescription>
@@ -33,8 +29,7 @@ export const SignupCard = () => {
             <CardContent className="space-y-4">
                 <div
                     className={cn(
-                        "flex w-full flex-nowrap items-center justify-between gap-4 *:w-full",
-                        primaryFontClassName,
+                        "font-primary flex w-full flex-nowrap items-center justify-between gap-4 *:w-full",
                     )}
                 >
                     <Button variant="outline">
@@ -68,10 +63,7 @@ export const SignupCard = () => {
                         placeholder="*******"
                     />
                 </div>
-                <Button
-                    type="button"
-                    className={cn("w-full", primaryFontClassName)}
-                >
+                <Button type="button" className="font-primary">
                     Create Account
                 </Button>
             </CardContent>
