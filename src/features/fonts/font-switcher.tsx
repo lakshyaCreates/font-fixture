@@ -108,7 +108,7 @@ export const FontSwitcher = () => {
                         className="font-primary w-full justify-between"
                     >
                         <span className="text-xs font-medium text-muted-foreground">
-                            Primary Font
+                            Secondary Font
                         </span>
                         <span>
                             {secondaryFont ? secondaryFont : "Select Font"}
