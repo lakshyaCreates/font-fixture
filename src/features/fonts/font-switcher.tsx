@@ -66,7 +66,22 @@ export const FontSwitcher = () => {
 
         const secondaryFontInQuery = searchParams.get("secondaryFont");
         if (secondaryFontInQuery) setSecondaryFont(secondaryFontInQuery);
-    }, [searchParams]);
+    }, []);
+
+    function updateSearchParams(
+        type: "primaryFont" | "secondaryFont",
+        value: string,
+    ) {
+        const params = new URLSearchParams(searchParams.toString());
+        params.delete(type);
+        params.set(type, value);
+
+        window.history.replaceState(
+            null,
+            "",
+            `${pathname}?${params.toString()}`,
+        );
+    }
 
     return (
         <div className="flex w-full flex-wrap items-center gap-2 rounded-lg border bg-background p-2 sm:flex-nowrap">
@@ -99,16 +114,9 @@ export const FontSwitcher = () => {
                                             setPrimaryFont(current);
                                             setPriSlot(false);
 
-                                            const params = new URLSearchParams(
-                                                searchParams.toString(),
-                                            );
-                                            params.delete("primaryFont");
-                                            params.set("primaryFont", current);
-
-                                            window.history.replaceState(
-                                                null,
-                                                "",
-                                                `${pathname}?${params.toString()}`,
+                                            updateSearchParams(
+                                                "primaryFont",
+                                                current,
                                             );
                                         }}
                                     >
@@ -159,19 +167,9 @@ export const FontSwitcher = () => {
                                             setSecondaryFont(current);
                                             setSecSlot(false);
 
-                                            const params = new URLSearchParams(
-                                                searchParams.toString(),
-                                            );
-                                            params.delete("secondaryFont");
-                                            params.set(
+                                            updateSearchParams(
                                                 "secondaryFont",
                                                 current,
-                                            );
-
-                                            window.history.replaceState(
-                                                null,
-                                                "",
-                                                `${pathname}?${params.toString()}`,
                                             );
                                         }}
                                     >
@@ -194,6 +192,16 @@ export const FontSwitcher = () => {
             <Button
                 onClick={() => {
                     // TODO: Logic to randomize the fonts
+                    const primary =
+                        fontNames[Math.floor(Math.random() * fontNames.length)];
+                    const secondary =
+                        fontNames[Math.floor(Math.random() * fontNames.length)];
+
+                    setPrimaryFont(primary);
+                    setSecondaryFont(secondary);
+
+                    updateSearchParams("primaryFont", primary);
+                    updateSearchParams("secondaryFont", secondary);
                 }}
                 size={"icon"}
                 variant={"outline"}
@@ -218,7 +226,7 @@ export const FontSwitcher = () => {
                 className="min-w-9"
             >
                 {copied ? (
-                    <CheckIcon className="text-muted-foreground" />
+                    <CheckIcon className="text-emerald-500" />
                 ) : (
                     <Share2Icon className="text-muted-foreground" />
                 )}
