@@ -1,6 +1,16 @@
 "use client";
 
-import { CheckIcon, ChevronsUpDownIcon, Share2Icon } from "lucide-react";
+import {
+    CheckIcon,
+    ChevronsUpDownIcon,
+    Dice1,
+    Dice2,
+    Dice3,
+    Dice4,
+    Dice5,
+    Dice6,
+    Share2Icon,
+} from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { usePathname, useSearchParams } from "next/navigation";
@@ -25,6 +35,8 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover";
 
+const DiceIcons = [Dice1, Dice2, Dice3, Dice4, Dice5, Dice6];
+
 export const FontSwitcher = () => {
     const pathname = usePathname();
     const searchParams = useSearchParams();
@@ -33,8 +45,20 @@ export const FontSwitcher = () => {
         useFonts();
 
     const [copied, setCopied] = useState(false);
+
     const [priSlot, setPriSlot] = useState(false);
     const [secSlot, setSecSlot] = useState(false);
+
+    const [diceIndex, setDiceIndex] = useState(0);
+    const DiceIcon = DiceIcons[diceIndex];
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setDiceIndex((prevIndex) => (prevIndex + 1) % DiceIcons.length);
+        }, 1500);
+
+        return () => clearInterval(interval);
+    }, []);
 
     useEffect(() => {
         const primaryFontInQuery = searchParams.get("primaryFont");
@@ -169,7 +193,16 @@ export const FontSwitcher = () => {
             </Popover>
             <Button
                 onClick={() => {
-                    // Logic to copy the url with search params
+                    // TODO: Logic to randomize the fonts
+                }}
+                size={"icon"}
+                variant={"outline"}
+                className="min-w-9"
+            >
+                <DiceIcon className="text-muted-foreground" />
+            </Button>
+            <Button
+                onClick={() => {
                     navigator.clipboard.writeText(window.location.href);
 
                     setCopied(true);
