@@ -205,8 +205,11 @@ export const FontSwitcher = () => {
                 }}
                 size={"icon"}
                 variant={"outline"}
-                className="min-w-9"
+                className="min-w-fit px-2.5 sm:min-w-9 sm:px-0"
             >
+                <span className="block text-primary/90 sm:hidden">
+                    Randomize
+                </span>
                 <DiceIcon className="text-muted-foreground" />
             </Button>
             <Button
@@ -223,8 +226,9 @@ export const FontSwitcher = () => {
                 }}
                 size={"icon"}
                 variant={"outline"}
-                className="min-w-9"
+                className="min-w-fit px-2.5 sm:min-w-9 sm:px-0"
             >
+                <span className="block text-primary/90 sm:hidden">Share</span>
                 {copied ? (
                     <CheckIcon className="text-emerald-500" />
                 ) : (
