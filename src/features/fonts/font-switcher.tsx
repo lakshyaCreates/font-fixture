@@ -24,13 +24,6 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover";
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select";
 
 export const FontSwitcher = () => {
     const pathname = usePathname();
@@ -81,6 +74,18 @@ export const FontSwitcher = () => {
                                         onSelect={(current) => {
                                             setPrimaryFont(current);
                                             setPriSlot(false);
+
+                                            const params = new URLSearchParams(
+                                                searchParams.toString(),
+                                            );
+                                            params.delete("primaryFont");
+                                            params.set("primaryFont", current);
+
+                                            window.history.replaceState(
+                                                null,
+                                                "",
+                                                `${pathname}?${params.toString()}`,
+                                            );
                                         }}
                                     >
                                         <CheckIcon
@@ -105,7 +110,7 @@ export const FontSwitcher = () => {
                         variant={"outline"}
                         role="combobox"
                         aria-expanded={secSlot}
-                        className="font-primary w-full justify-between"
+                        className="font-secondary w-full justify-between"
                     >
                         <span className="text-xs font-medium text-muted-foreground">
                             Secondary Font
@@ -129,6 +134,21 @@ export const FontSwitcher = () => {
                                         onSelect={(current) => {
                                             setSecondaryFont(current);
                                             setSecSlot(false);
+
+                                            const params = new URLSearchParams(
+                                                searchParams.toString(),
+                                            );
+                                            params.delete("secondaryFont");
+                                            params.set(
+                                                "secondaryFont",
+                                                current,
+                                            );
+
+                                            window.history.replaceState(
+                                                null,
+                                                "",
+                                                `${pathname}?${params.toString()}`,
+                                            );
                                         }}
                                     >
                                         <CheckIcon
