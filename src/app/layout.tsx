@@ -26,6 +26,13 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
+            <head>
+                <script
+                    defer
+                    src="https://umami-self-gamma.vercel.app/script.js"
+                    data-website-id="f6159ee4-7c75-4af3-829e-67f8d7ab7581"
+                />
+            </head>
             <LoadFonts />
             <body
                 className={`${geistSans.variable} overflow-x-hidden antialiased`}
